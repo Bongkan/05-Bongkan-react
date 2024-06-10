@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Owner from "./pages/Owner";
 import Layout from "./App";
-import Admin from "./pages/Admin";
 
 const Main = () => {
   const [users, setUsers] = useState([]);
