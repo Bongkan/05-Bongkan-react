@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import Admin from "./Admin";
+import User from "./User";
 
-const Home = () => {
+const Home = ({ users, addUser, setUsers }) => {
+  const [view, setView] = useState("home");
+
   return (
     <div className="text-center">
       <h1 className="text-4xl font-bold my-8">
@@ -20,6 +24,10 @@ const Home = () => {
           Admin Home Sector
         </button>
       </div>
+      {view === "admin" && (
+        <Admin users={users} addUser={addUser} setUsers={setUsers} />
+      )}
+      {view === "user" && <User users={users} />}
     </div>
   );
 };
