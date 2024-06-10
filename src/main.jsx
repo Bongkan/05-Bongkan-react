@@ -24,10 +24,6 @@ const Main = () => {
           element: <Home users={users} addUser={addUser} setUsers={setUsers} />,
         },
         {
-          path: "admin",
-          element: <Admin />,
-        },
-        {
           path: "owner",
           element: <Owner />,
         },
