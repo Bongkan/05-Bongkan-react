@@ -1,12 +1,12 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Nav from "./components/Nav";
-import Home from "./pages/Home";
 
 const Layout = () => {
   return (
     <div>
       <Nav />
-      <Home />
+      <Outlet />
     </div>
   );
 };
