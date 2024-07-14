@@ -4,10 +4,18 @@ const Admin = ({ users, addUser, setUsers }) => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [position, setPosition] = useState("");
+  const [editIndex, setEditIndex] = useState(null);
 
   const handleSubmit = () => {
     const newUser = { name, lastName, position };
-    addUser(newUser);
+    if (editIndex !== null) {
+      const updatedUsers = [...users];
+      updatedUsers[editIndex] = newUser;
+      setUsers(updatedUsers);
+      setEditIndex(null);
+    } else {
+      addUser(newUser);
+    }
     setName("");
     setLastName("");
     setPosition("");
@@ -17,6 +25,13 @@ const Admin = ({ users, addUser, setUsers }) => {
     const updatedUsers = [...users];
     updatedUsers.splice(index, 1);
     setUsers(updatedUsers);
+  };
+  const handleEdit = (index) => {
+    const user = users[index];
+    setName(user.name);
+    setLastName(user.lastName);
+    setPosition(user.position);
+    setEditIndex(index);
   };
 
   return (
@@ -69,6 +84,12 @@ const Admin = ({ users, addUser, setUsers }) => {
                   onClick={() => deleteUser(index)}
                 >
                   delete
+                </button>
+                <button
+                  className="bg-orange-600 rounded py-1 px-2 text-white ml-5"
+                  onClick={() => handleEdit(index)}
+                >
+                  Edit
                 </button>
               </td>
             </tr>
